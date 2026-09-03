@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build OpenGL",
+            "command": "C:\\MinGW\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-I${workspaceFolder}\\external\\freeglut\\include",
+                "-L${workspaceFolder}\\external\\freeglut\\lib",
+                "-lfreeglut",
+                "-lopengl32",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "Build OpenGL project"
+        },
+        {
+            "label": "Copy FreeGLUT DLL",
+            "type": "shell",
+            "command": "Copy-Item",
+            "args": [
+                "${workspaceFolder}\\external\\freeglut\\bin\\libfreeglut.dll",
+                "${fileDirname}\\libfreeglut.dll",
+                "-Force"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build + Prepare OpenGL",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build OpenGL",
+                "Copy FreeGLUT DLL"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build OpenGL project and copy FreeGLUT runtime"
+        }
+    ]
+}

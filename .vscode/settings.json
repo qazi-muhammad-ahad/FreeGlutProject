@@ -39,6 +39,7 @@
   "C_Cpp_Runner.linkerArgs": [
     "-Lexternal/freeglut/lib",
     "-lfreeglut",
+    "-lglu32",
     "-lopengl32"
   ],
   "C_Cpp_Runner.includePaths": [

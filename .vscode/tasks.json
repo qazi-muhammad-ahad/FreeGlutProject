@@ -12,6 +12,7 @@
                 "-I${workspaceFolder}\\external\\freeglut\\include",
                 "-L${workspaceFolder}\\external\\freeglut\\lib",
                 "-lfreeglut",
+                "-lglu32",
                 "-lopengl32",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
